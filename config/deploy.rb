@@ -90,7 +90,7 @@ end
 set(:scm_passphrase) do
   Capistrano::CLI.password_prompt( "Enter your git password: ")
 end
-set :repository, "git://github.com/concord-consortium/rigse.git"
+set :repository, "git://github.com/wday/rigse.git"
 set :deploy_via, :remote_cache
 
 #############################################################
@@ -596,6 +596,11 @@ namespace :convert do
   desc "change git remote url for origin to git://github.com/concord-consortium/rigse.git"
   task :change_git_origin_url_to_concord_consortium, :roles => :app do
     run("cd #{shared_path}/cached-copy; git remote set-url origin git://github.com/concord-consortium/rigse.git")
+  end
+
+  desc "change git remote url for origin to git://github.com/wday/rigse.git"
+  task :change_git_origin_url_wday, :roles => :app do
+    run("cd #{shared_path}/cached-copy; git remote set-url origin git://github.com/wday/rigse.git")
   end
 
 end

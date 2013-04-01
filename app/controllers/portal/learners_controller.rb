@@ -19,6 +19,7 @@ class Portal::LearnersController < ApplicationController
       # this will only work once for this token
       if jnlp_user = Dataservice::JnlpSession.get_user_from_token(params[:jnlp_session])
         # store this user in the rails session so future request use this user
+        sign_in jnlp_user, :bypass => true
         self.current_visitor = jnlp_user
       else
         # no valid jnlp_session could be found for this token
